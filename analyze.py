@@ -11,7 +11,7 @@ LSA_FOOTER = """Generated %s for %s::%s.\n"""
 LSA_FORMAT = '.lsa'
 
 TRANSISTORS_HEADER = LSA_HEADER+"""Transistors\n\nCircuit\t\tComponent\t\tWidth\tNumber of Transistors\n"""
-TRANSISTORS_FOOTER = """=============================================================\nTotal\t\t\t\t\t%s\n\n"""+LSA_FOOTER
+TRANSISTORS_FOOTER = """=============================================================\nTotal\t\t\t\t\t\t%s\n\n"""+LSA_FOOTER
 TRANSISTORS_FILE = 'transistors'+LSA_FORMAT
 
 UNUSED_HEADER = LSA_HEADER+"""Unused Circuits\n\n"""
