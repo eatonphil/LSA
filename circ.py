@@ -99,6 +99,7 @@ def count(xmldoc, filename):
 				_component['transistors'] = gate_c
 		else:
 			location = filename
+		if location != stdl.GATE_CIRCS:
 			gate_c = count(find(location, comp), location)
 			_component['children'] = gate_c
 		children.append(_component)

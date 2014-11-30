@@ -13,9 +13,9 @@ Mostly, this library was a fun chance to learn more about circuits in a hands on
 Setup & Usage
 -----
 
-1. Add the folder to the path. This is necessary to make sure the STDL circuits are available to the lsa application.
+#### Setup Add the folder to the path. This is necessary to make sure the STDL circuits are available to the lsa application.
 
-2. lsa circuit-file [circuit-name]
+#### lsa circuit-file [circuit-name]
 
 Where circuit-name defaults to "main". This can be changed to narrowly target a specific circuit/sub-circuit within a file.
 
@@ -23,13 +23,21 @@ This creates a few lsa files, currently: transistors.lsa and unused.lsa.
 
 WARNING: This will fail if a component is used that is not yet supported (reimplemented in the STDL) by lsa.
 
+#### Example
+
+From the lsa directory.
+
+    ./lsa tests/vendor/emcdowell/RightShift.circ
+    cat transistors.lsa
+    cat unused.lsa
+
 ### Generated Files
 
-## transistors.lsa
+#### transistors.lsa
 
 This file contains a list of all components used and their transistor counts. Components are separated by sub-circuits and sub-total transistor counts are listed at the end of each sub-section.
 
-## unused.lsa
+#### unused.lsa
 
 This file displays any unused circuits in the circuit.
 
