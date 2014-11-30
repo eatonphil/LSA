@@ -1,6 +1,8 @@
 import sys
 import time
 
+import math
+
 import circ
 import logisim.core as core
 
@@ -8,7 +10,7 @@ LSA_HEADER = """Logisim Static Analysis - """
 LSA_FOOTER = """Generated %s for %s::%s.\n"""
 LSA_FORMAT = '.lsa'
 
-TRANSISTORS_HEADER = LSA_HEADER+"""Transistors\n\nCircuit\t\tComponent\tWidth\tNumber of Transistors\n"""
+TRANSISTORS_HEADER = LSA_HEADER+"""Transistors\n\nCircuit\t\tComponent\t\tWidth\tNumber of Transistors\n"""
 TRANSISTORS_FOOTER = """=============================================================\nTotal\t\t\t\t\t%s\n\n"""+LSA_FOOTER
 TRANSISTORS_FILE = 'transistors'+LSA_FORMAT
 
@@ -16,24 +18,26 @@ UNUSED_HEADER = LSA_HEADER+"""Unused Circuits\n\n"""
 UNUSED_FOOTER = """\n"""+LSA_FOOTER
 UNUSED_FILE = 'unused'+LSA_FORMAT
 
-def total(root):
-	a = root['transistors']
+WIDTH_TAB_INDENT = 16
+
+def total(root, parent_count=1):
+	a = root['transistors'] * root['count'] * parent_count
 	for child in root['children']:
-		a += total(child)
+		a += total(child, root['count'] * parent_count)
 	return a
 
-def _dsp(root, file_h, depth=1):
-	fname = root['name']
-	if len(root['name']) < 8: fname = root['name']+"\t" # for formatting
+def _dsp(root, file_h, parent_count=1):
+	fname = root['name']+" x "+str(root['count'])
+	fname = fname+''.join([' ' for i in range(WIDTH_TAB_INDENT-len(fname))])
 	if len(root['children']) > 0:
 		str_children = sorted([s for s in root['children'] if len(s['children']) == 0])
 		dict_children = [s for s in root['children'] if len(s['children']) > 0]
 		root['children'] = str_children + dict_children
-		file_h.write(fname+'\n')
+		file_h.write(root['name']+' x '+str(root['count'])+'\n')
 	else:
-		file_h.write('\t\t'+"\t".join([fname, str(root['width']), str(root['transistors'])])+"\n")
+		file_h.write('\t\t'+"\t".join([fname, str(root['width']), str(root['transistors'] * root['count'] * parent_count)])+"\n")
 	for child in root['children']:
-		_dsp(child, file_h)
+		_dsp(child, file_h, parent_count * root['count'])
 	if len(root['children']) > 0 and 'root' not in root:
 		file_h.write('\t\tSubtotal ('+root['name']+')\t'+str(total(root))+'\n')
 

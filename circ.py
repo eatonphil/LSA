@@ -46,19 +46,29 @@ def write(file_h, string):
 	if file_h is not None:
 		file_h.write(string)
 
-def circuits(component):
-	if type(component) == type([]):
+def circuits(_component):
+	if type(_component) == type([]):
 		names = []
-		for child in component:
+		for child in _component:
 			names += circuits(child)
 	else:
-		names = [component['name']]
-		for child in component['children']:
+		names = [_component['name']]
+		for child in _component['children']:
 			names += circuits(child)
 	return names
 
-def component(name, width=1, inputs=2, transistors=0, children=[]):
-	return {'name': name, 'width': width, 'inputs': inputs, 'transistors': transistors, 'children': children}
+def increase(_component):
+	return component(
+		_component['name'],
+		_component['width'],
+		_component['inputs'],
+		_component['transistors'],
+		_component['count'] + 1,
+		_component['children']
+	)
+
+def component(name, width=1, inputs=2, transistors=0, count=1, children=[]):
+	return {'name': name, 'width': width, 'inputs': inputs, 'transistors': transistors, 'count': count, 'children': children}
 
 def count_fun(xmldoc):
 	_count = [0]
@@ -76,7 +86,7 @@ def count_fun(xmldoc):
 	return _count[0]
 
 def count(xmldoc, filename):
-	children = []
+	children = {}
 
 	def condition(xmlroot):
 		return (xmlroot is not None) and \
@@ -102,10 +112,13 @@ def count(xmldoc, filename):
 		if location != stdl.GATE_CIRCS:
 			gate_c = count(find(location, comp), location)
 			_component['children'] = gate_c
-		children.append(_component)
+		if name in children:
+			children[name] = increase(children[name])
+		else:
+			children[name] = _component
 
 	iterate(xmldoc, None, condition, function)
-	return children
+	return children.values()
 
 def unused(xmldoc, filename, circuit):
 	_circuits = []
