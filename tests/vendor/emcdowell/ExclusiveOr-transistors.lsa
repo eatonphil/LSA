@@ -1,9 +1,0 @@
-Logisim Static Analysis - Transistors
-
-Circuit		Component		Width	Number of Transistors
-main x 1
-		NAND Gate x 4   	1	16
-=============================================================
-Total						16
-
-Generated Sun Nov 30 14:04:15 2014 for tests/vendor/emcdowell/ExclusiveOr.circ::main.

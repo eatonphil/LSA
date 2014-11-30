@@ -1,8 +1,0 @@
-Logisim Static Analysis - Transistors
-
-Circuit		Component		Width	Number of Transistors
-		main x 1        	1	0
-=============================================================
-Total						0
-
-Generated Sun Nov 30 14:04:24 2014 for tests/vendor/rhoggard/06-08a) 4-bit Full Adder.circ::main.
