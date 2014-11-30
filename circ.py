@@ -112,7 +112,7 @@ def count(xmldoc, filename):
 		if location != stdl.GATE_CIRCS:
 			comp = find(location, name)
 			if not comp:
-				print stdl.COMP_NOT_FOUND_ERROR % (name, width, inputs), filename
+				print stdl.COMP_NOT_FOUND_ERROR % (name, width, inputs, filename)
 				return False
 			gate_c = count(comp, location)
 			_component['children'] = gate_c

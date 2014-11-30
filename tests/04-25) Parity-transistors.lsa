@@ -1,9 +1,0 @@
-Logisim Static Analysis - Transistors
-
-Circuit		Component		Width	Number of Transistors
-main x 1
-		XOR Gate x 7    	1	112
-=============================================================
-Total					112
-
-Generated Sun Nov 30 10:29:16 2014 for tests/vendor/rhoggard/04-25) Parity.circ::main.

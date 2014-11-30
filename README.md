@@ -1,17 +1,14 @@
-Logisim Static Analysis Tool - LSA
-==================================
+# Logisim Static Analysis Tool - LSA
 
 This is a tool to statically analyze logisim circuits. You can use this in conjunction with the new STDL (discussed below) to count transistors and get other information statically available.
 
-STDL - Standard Library
------------------------
+## STDL - Standard Library
 
 This library re-implements the Logisim standard library from the ground up building from CMOS logic universal gates. As a result, some of the larger circuits (i.e. Multiplexer16x16) can be VERY slow because of the poor way memory is handled in Logisim. This library is one way to get a transistor count for all elements used in Logisim circuits. Unfortunately, arbitrary bit-width or input-number gates are currently impossible in Logisim. They were only possible in the standard library because the author could "cheat" by making API calls to functions in Java.
 
 Mostly, this library was a fun chance to learn more about circuits in a hands on manner. The library does NOT NEED TO BE USED to get the transistor count. The lsa program provides lookups for many components. Support for more components will continue to grow in time.
 
-Setup & Usage
------
+## Setup & Usage
 
 #### Setup
 
@@ -51,5 +48,11 @@ This file contains a list of all components used and their transistor counts. Co
 This file displays any unused circuits in the circuit.
 
 WARNING: The lsa program is easily tricked. An unconnected circuit or component that is placed in or referenced (recursively) by circuit-name (second argument to ./lsa) will be counted as a connected circuit or component.
+
+### Dependencies
+
+This repo is guarenteed to run correctly on python 2.7. It has not yet been tried on python 3.x.
+
+### Other Notes
 
 This tool and library is still in its infancy. Please report any bugs!

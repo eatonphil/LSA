@@ -11,7 +11,7 @@ def test(path=TEST_DIR):
 			analyze.analyze(path+circ)
 			for lsa in os.listdir('./'):
 				if lsa.endswith(analyze.LSA_FORMAT):
-					shutil.move(lsa, TEST_DIR+circ[:-5]+'-'+lsa)
+					shutil.move(lsa, path+circ[:-5]+'-'+lsa)
 		if os.path.isdir(path+circ):
 			test(path+circ+'/')
 

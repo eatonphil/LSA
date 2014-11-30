@@ -50,23 +50,23 @@ def dsp(filename, circuit, circuit_tree):
 		_dsp(circuit_tree, f)
 		f.write(TRANSISTORS_FOOTER % (str(total(circuit_tree)), time.ctime(), filename, circuit))
 
-def fail(name, width='N/A', inputs='N/A'):
+def fail(filename, name, width='N/A', inputs='N/A'):
 	import stdl
-	print stdl.COMP_NOT_FOUND_ERROR % (name, width, inputs)
+	print stdl.COMP_NOT_FOUND_ERROR % (name, width, inputs, filename)
 	return False
 
 def analyze_transistors(filename, circuit):
 	circuit_tree = circ.component(circuit)
 	xmldoc = circ.find(filename, circuit)
 	if xmldoc is None:
-		return fail(xmldoc)
+		return fail(filename, xmldoc)
 	circuit_tree['children'] = circ.count(xmldoc, filename)
 	dsp(filename, circuit, circuit_tree)
 
 def analyze_unused(filename, circuit):
 	xmldoc = circ.find(filename, circuit)
 	if xmldoc is None:
-		return fail(xmldoc)
+		return fail(filename, xmldoc)
 	unused = circ.unused(xmldoc, filename, circuit)
 	with open(UNUSED_FILE, 'w') as f:
 		f.write(UNUSED_HEADER)
