@@ -23,11 +23,13 @@ This creates a few lsa files, currently: transistors.lsa and unused.lsa.
 
 WARNING: This will fail if a component is used that is not yet supported (reimplemented in the STDL) by lsa.
 
-### transistors.lsa
+### Generated Files
+
+## transistors.lsa
 
 This file contains a list of all components used and their transistor counts. Components are separated by sub-circuits and sub-total transistor counts are listed at the end of each sub-section.
 
-### unused.lsa
+## unused.lsa
 
 This file displays any unused circuits in the circuit.
 
