@@ -27,7 +27,7 @@ WARNING: This will fail if a component is used that is not yet supported (reimpl
 
 #### Example
 
-From the lsa directory.
+From the lsa directory:
 
     ./lsa tests/vendor/emcdowell/RightShift.circ
     cat transistors.lsa
