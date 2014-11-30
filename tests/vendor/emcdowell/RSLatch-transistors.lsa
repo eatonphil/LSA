@@ -1,0 +1,9 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		NOR Gate x 2    	1	8
+=============================================================
+Total						8
+
+Generated Sun Nov 30 14:04:18 2014 for tests/vendor/emcdowell/RSLatch.circ::main.

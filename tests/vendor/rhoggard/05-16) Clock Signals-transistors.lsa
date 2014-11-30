@@ -1,0 +1,8 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+		main x 1        	1	0
+=============================================================
+Total						0
+
+Generated Sun Nov 30 14:04:19 2014 for tests/vendor/rhoggard/05-16) Clock Signals.circ::main.

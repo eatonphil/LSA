@@ -1,0 +1,15 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+D Flip-Flop x 1
+		NOT x 1         	1	2
+SRLatch x 1
+		AND x 2         	1	16
+		NOR x 2         	1	8
+		Subtotal (SRLatch)	24
+		Subtotal (D Flip-Flop)	26
+=============================================================
+Total						26
+
+Generated Sun Nov 30 14:04:19 2014 for tests/vendor/rhoggard/05-39) Detecting an Input Sequence.circ::main.

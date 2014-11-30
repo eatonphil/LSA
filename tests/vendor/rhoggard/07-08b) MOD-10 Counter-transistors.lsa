@@ -1,0 +1,13 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		AND Gate x 1    	1	8
+J-K Flip-Flop x 4
+		NOR x 2         	1	32
+		AND x 4         	1	128
+		Subtotal (J-K Flip-Flop)	160
+=============================================================
+Total						168
+
+Generated Sun Nov 30 14:04:32 2014 for tests/vendor/rhoggard/07-08b) MOD-10 Counter.circ::main.

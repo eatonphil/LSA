@@ -1,0 +1,9 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		XOR Gate x 4    	1	64
+=============================================================
+Total						64
+
+Generated Sun Nov 30 14:04:13 2014 for tests/vendor/emcdowell/BitAdder.circ::main.
