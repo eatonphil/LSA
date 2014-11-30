@@ -1,0 +1,10 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		NOT Gate x 2    	1	8
+		AND Gate x 4    	1	32
+=============================================================
+Total					40
+
+Generated Sun Nov 30 10:29:13 2014 for tests/vendor/emcdowell/Decoder.circ::main.

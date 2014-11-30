@@ -6,6 +6,8 @@ GATE_CIRCS = NAMESPACE+"/STDLGates.circ"
 PLEXER_CIRCS = NAMESPACE+"/STDLPlexers.circ"
 MEMORY_CIRCS = NAMESPACE+"/STDLMemory.circ"
 
+COMP_NOT_FOUND_ERROR = "Error, component lookup not yet supported: %s width %s inputs %s."
+
 GATES = {
     "AND Gate": "AND",
     "OR Gate": "OR",
@@ -113,8 +115,10 @@ def component(comp, width, inputs, fail=True):
     except:       
         pass
 
+    error = COMP_NOT_FOUND_ERROR % (comp, width, inputs)
+
     if fail:
         import sys
-        print "Error, component lookup not yet supported: %s width %s inputs %s." % (comp, width, inputs)
+        print 
         sys.exit(0)
-    return False
+    return False, error

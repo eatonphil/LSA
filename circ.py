@@ -101,16 +101,20 @@ def count(xmldoc, filename):
 		width = get_width(xmlroot)
 		inputs = 1
 		_component = component(name, width)
-		lookup = stdl.component(name, width, inputs, fail=False)
+		lookup, error = stdl.component(name, width, inputs, False)
 		if lookup is not False:
-			comp, location = stdl.component(name, width, inputs)
+			name, location = stdl.component(name, width, inputs)
 			if location == stdl.GATE_CIRCS:
-				gate_c = count_fun(find(location, comp))
+				gate_c = count_fun(find(location, name))
 				_component['transistors'] = gate_c
 		else:
 			location = filename
 		if location != stdl.GATE_CIRCS:
-			gate_c = count(find(location, name), location)
+			comp = find(location, name)
+			if not comp:
+				print stdl.COMP_NOT_FOUND_ERROR % (name, width, inputs), filename
+				return False
+			gate_c = count(comp, location)
 			_component['children'] = gate_c
 		if name in children:
 			children[name] = increase(children[name])

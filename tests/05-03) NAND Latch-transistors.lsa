@@ -1,0 +1,10 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		NOT Gate x 2    	1	8
+		NAND Gate x 6   	1	24
+=============================================================
+Total					32
+
+Generated Sun Nov 30 10:29:17 2014 for tests/vendor/rhoggard/05-03) NAND Latch.circ::main.

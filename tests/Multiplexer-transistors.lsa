@@ -1,0 +1,11 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		OR Gate x 1     	1	8
+		NOT Gate x 2    	1	8
+		AND Gate x 4    	1	32
+=============================================================
+Total					48
+
+Generated Sun Nov 30 10:29:14 2014 for tests/vendor/emcdowell/Multiplexer.circ::main.

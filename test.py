@@ -7,7 +7,6 @@ TEST_DIR = 'tests/'
 
 def test(path=TEST_DIR):
 	for circ in os.listdir(path):
-		print circ
 		if circ.endswith('.circ'):
 			analyze.analyze(path+circ)
 			for lsa in os.listdir('./'):

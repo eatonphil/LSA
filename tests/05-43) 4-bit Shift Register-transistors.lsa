@@ -1,0 +1,15 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+D Flip-Flop x 4
+		NOT x 1         	1	16
+SRLatch x 1
+		AND x 2         	1	64
+		NOR x 2         	1	32
+		Subtotal (SRLatch)	24
+		Subtotal (D Flip-Flop)	112
+=============================================================
+Total					112
+
+Generated Sun Nov 30 10:29:19 2014 for tests/vendor/rhoggard/05-43) 4-bit Shift Register.circ::main.

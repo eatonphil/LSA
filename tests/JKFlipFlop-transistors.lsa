@@ -1,0 +1,12 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		NOT Gate x 1    	1	4
+		NAND Gate x 2   	1	8
+		AND Gate x 4    	1	32
+		NOR Gate x 4    	1	16
+=============================================================
+Total					60
+
+Generated Sun Nov 30 10:29:14 2014 for tests/vendor/emcdowell/JKFlipFlop.circ::main.
