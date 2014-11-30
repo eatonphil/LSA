@@ -13,7 +13,9 @@ Mostly, this library was a fun chance to learn more about circuits in a hands on
 Setup & Usage
 -----
 
-#### Setup Add the folder to the path. This is necessary to make sure the STDL circuits are available to the lsa application.
+#### Setup
+
+Add the folder to the path. This is necessary to make sure the STDL circuits are available to the lsa application.
 
 #### lsa circuit-file [circuit-name]
 
