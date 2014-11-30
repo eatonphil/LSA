@@ -1,0 +1,11 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		NOT Gate x 1    	1	4
+		OR Gate x 1     	1	8
+		AND Gate x 2    	1	16
+=============================================================
+Total					28
+
+Generated Sat Nov 29 22:48:03 2014 for tests/test01.circ::main.

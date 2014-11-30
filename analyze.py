@@ -39,23 +39,25 @@ def _dsp(root, file_h, parent_count=1):
 	for child in root['children']:
 		_dsp(child, file_h, parent_count * root['count'])
 	if len(root['children']) > 0 and 'root' not in root:
-		file_h.write('\t\tSubtotal ('+root['name']+')\t'+str(total(root))+'\n')
+		subtotal = 'Subtotal ('+root['name']+')'
+		subtotal = subtotal+''.join([' ' for i in range(WIDTH_TAB_INDENT-len(subtotal))])
+		file_h.write('\t\t'+subtotal+'\t'+str(total(root))+'\n')
 
-def dsp(circuit, circuit_tree):
+def dsp(filename, circuit, circuit_tree):
 	with open(TRANSISTORS_FILE, 'w') as f:
 		f.write(TRANSISTORS_HEADER)
 		circuit_tree['root'] = True
 		_dsp(circuit_tree, f)
-		f.write(TRANSISTORS_FOOTER % (str(total(circuit_tree)), time.ctime(), sys.argv[1], circuit))
+		f.write(TRANSISTORS_FOOTER % (str(total(circuit_tree)), time.ctime(), filename, circuit))
 
-def analyze_transistors(circuit):
+def analyze_transistors(filename, circuit):
 	circuit_tree = circ.component(circuit)
-	circuit_tree['children'] = circ.count(circ.find(sys.argv[1], circuit), sys.argv[1])
-	dsp(circuit, circuit_tree)
+	circuit_tree['children'] = circ.count(circ.find(filename, circuit), filename)
+	dsp(filename, circuit, circuit_tree)
 
-def analyze_unused(circuit):
-	xmldoc = circ.find(sys.argv[1], circuit)
-	unused = circ.unused(xmldoc, sys.argv[1], circuit)
+def analyze_unused(filename, circuit):
+	xmldoc = circ.find(filename, circuit)
+	unused = circ.unused(xmldoc, filename, circuit)
 	with open(UNUSED_FILE, 'w') as f:
 		f.write(UNUSED_HEADER)
 		if len(unused) == 0:
@@ -63,8 +65,12 @@ def analyze_unused(circuit):
 		else:
 			for comp in unused:
 				f.write(comp+'\n')
-		f.write(UNUSED_FOOTER % (time.ctime(), sys.argv[1], circuit))
+		f.write(UNUSED_FOOTER % (time.ctime(), filename, circuit))
 
+
+def analyze(filename, circuit=core.MAIN_CIRC):
+	analyze_transistors(filename, circuit)
+	analyze_unused(filename, circuit)
 
 if __name__ == '__main__':
 	if len(sys.argv) < 2:
@@ -80,5 +86,4 @@ if __name__ == '__main__':
 	circuit = core.MAIN_CIRC
 	if len(sys.argv) > 2:
 		circuit = sys.argv[2]
-	analyze_transistors(circuit)
-	analyze_unused(circuit)
+	analyze(sys.argv[1], circuit)

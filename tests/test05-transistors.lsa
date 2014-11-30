@@ -1,0 +1,12 @@
+Logisim Static Analysis - Transistors
+
+Circuit		Component		Width	Number of Transistors
+main x 1
+		NOT Gate x 1    	1	4
+test05a x 1
+		NOT Gate x 1    	1	4
+		Subtotal (test05a)	4
+=============================================================
+Total					8
+
+Generated Sat Nov 29 22:48:04 2014 for tests/test05.circ::main.

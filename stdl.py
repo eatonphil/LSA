@@ -110,7 +110,7 @@ def component(comp, width, inputs, fail=True):
             return PLEXERS[comp][width][inputs], PLEXER_CIRCS
         elif comp in MEMORY:
             return MEMORY[comp][width][inputs], MEMORY_CIRCS
-    except:        
+    except:       
         pass
 
     if fail:

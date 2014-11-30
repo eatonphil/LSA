@@ -101,7 +101,7 @@ def count(xmldoc, filename):
 		width = get_width(xmlroot)
 		inputs = 1
 		_component = component(name, width)
-		lookup = stdl.component(name, width, inputs)
+		lookup = stdl.component(name, width, inputs, fail=False)
 		if lookup is not False:
 			comp, location = stdl.component(name, width, inputs)
 			if location == stdl.GATE_CIRCS:
@@ -110,7 +110,7 @@ def count(xmldoc, filename):
 		else:
 			location = filename
 		if location != stdl.GATE_CIRCS:
-			gate_c = count(find(location, comp), location)
+			gate_c = count(find(location, name), location)
 			_component['children'] = gate_c
 		if name in children:
 			children[name] = increase(children[name])

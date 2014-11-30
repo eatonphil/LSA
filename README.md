@@ -33,6 +33,13 @@ From the lsa directory:
     cat transistors.lsa
     cat unused.lsa
 
+#### Testing
+
+To run all tests:
+
+    python test.py
+
+
 ### Generated Files
 
 #### transistors.lsa
