@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [ -n "$2" ]; then
-	python analyze.py $1 $2
-else
-	python analyze.py $1
-fi
